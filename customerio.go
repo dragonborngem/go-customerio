@@ -55,9 +55,9 @@ func (c *CustomerIO) Identify(customerID string, attributes map[string]interface
 }
 
 // Track sends a single event to Customer.io for the supplied user
-func (c *CustomerIO) Track(customerID string, eventName string, data map[string]interface{}) error {
+func (c *CustomerIO) Track(customerID string, eventName string, timestamp uint, data map[string]interface{}) error {
 
-	body := map[string]interface{}{"name": eventName, "data": data}
+	body := map[string]interface{}{"name": eventName, "timestamp": timestamp, "data": data}
 	j, err := json.Marshal(body)
 
 	if err != nil {
